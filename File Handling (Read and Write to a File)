@@ -1,0 +1,26 @@
+import java.io.*;
+
+public class FileHandlingExample {
+    public static void main(String[] args) {
+        String filePath = "example.txt";
+
+        // Write to a file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write("Hello, this is a test file.");
+            writer.newLine();
+            writer.write("This is the second line.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Read from a file
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
